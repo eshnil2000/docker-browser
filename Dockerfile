@@ -1,5 +1,5 @@
 #Build: docker build -t eshnil2000/docker-browser .
-#Run: docker run -d -e VIRTUAL_HOST=go.proxy.chainapp.live --net nginx-proxy -t eshnil2000/docker-browser
+#Run: docker run --volume "/var/run/docker.sock:/var/run/docker.sock" -d -e VIRTUAL_HOST=go.proxy.chainapp.live --net nginx-proxy -t eshnil2000/docker-browser
 
 FROM node:10
 # Create app directory
