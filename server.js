@@ -1,3 +1,13 @@
+//SET THESE VARIABLE//
+var serverPort=10000;
+var host='proxy.chainapp.live';
+//time in milliseconds
+var timeLimit=10000;
+var dockerNetwork='nginx-proxy';
+var containerLaunch='jwilder/whoami';
+var containerPort=8000;
+//END SET VARIABLES//
+
 var fs = require('fs')
 var path = require('path')
 var http = require('http')
@@ -7,10 +17,10 @@ var run = require('docker-run')
 var xtend = require('xtend')
 var opts= {}
 var rnd='xxx';
-var host='proxy.chainapp.live';
 var subhost='';
 var newhost=host;
 var html='';
+
 server.on('request', function(req, res) {
 
 	function destroyContainer(arg) {
@@ -20,14 +30,14 @@ server.on('request', function(req, res) {
   		console.log('child id', child.id);
 	}
 	
-	function myFunc1(arg) {
+	function containerSpawned(arg) {
 		console.log(`spawned`, arg);
-	  	setTimeout(destroyContainer, 10000, arg);
+	  	setTimeout(destroyContainer, timeLimit, arg);
 		res.writeHead(301,{Location: 'http://'+newhost});
 		res.end(); 
 	}
 
-	function myFunc2(arg) {
+	function containerExited(arg) {
 		console.log(`destroyed`, child.id);
 	}  
 
@@ -36,13 +46,13 @@ server.on('request', function(req, res) {
   		charset: 'alphabetic'
 	});
 	newhost=subhost.concat('.').concat(host);
-	var child = run('jwilder/whoami', xtend(opts,{net:'nginx-proxy',
+	var child = run(containerLaunch, xtend(opts,{net:dockerNetwork,
          env:{VIRTUAL_HOST:newhost      },
-         expose: 8000,
+         expose: containerPort,
         } ))
 
-	child.on('spawn', myFunc1)
-	child.on('exit', myFunc2)
+	child.on('spawn', containerSpawned)
+	child.on('exit', containerExited)
 
 })
 
@@ -50,4 +60,4 @@ server.on('listening', function() {
   console.log('Open http://localhost:'+server.address().port+'/ in your browser')
 })
 
-server.listen(10000)
+server.listen(serverPort)

@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "demo": "node index.js"
+    "demo": "node server.js"
   },
   "repository": {
     "type": "git",
