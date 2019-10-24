@@ -22,7 +22,7 @@ var newhost=host;
 var html='';
 
 server.on('request', function(req, res) {
-
+	console.log("launched container",containerLaunch)
 	function destroyContainer(arg) {
   		console.log(`arg was => ${arg}`);
   		var kill= child.destroy();
@@ -48,7 +48,7 @@ server.on('request', function(req, res) {
 	newhost=subhost.concat('.').concat(host);
 	var child = run(containerLaunch, xtend(opts,{net:dockerNetwork,
          env:{VIRTUAL_HOST:newhost      },
-         expose: containerPort,
+         expose:containerPort,
         } ))
 
 	child.on('spawn', containerSpawned)
