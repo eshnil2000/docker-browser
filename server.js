@@ -7,21 +7,27 @@ var dockerNetwork='nginx-proxy';
 var containerLaunch='jwilder/whoami';
 var containerPort=8000;
 //END SET VARIABLES//
+const nocache = require('nocache');
+const express = require('express');
+const app = express();
+const appPort = 10000;
+app.use(nocache());
 
-var fs = require('fs')
-var path = require('path')
-var http = require('http')
+var fs = require('fs');
+var path = require('path');
+var http = require('http');
 var randomstring = require("randomstring");
-var server = http.createServer()
-var run = require('docker-run')
-var xtend = require('xtend')
-var opts= {}
+var server = http.createServer();
+var run = require('docker-run');
+var xtend = require('xtend');
+var opts= {};
 var rnd='xxx';
 var subhost='';
 var newhost=host;
 var html='';
 
-server.on('request', function(req, res) {
+app.get('/', (req, res) =>{
+//server.on('request', function(req, res) {
 	console.log("launched container",containerLaunch)
 	function destroyContainer(arg) {
   		console.log(`arg was => ${arg}`);
@@ -56,8 +62,10 @@ server.on('request', function(req, res) {
 
 })
 
-server.on('listening', function() {
+/*server.on('listening', function() {
   console.log('Open http://localhost:'+server.address().port+'/ in your browser')
-})
+})*/
 
-server.listen(serverPort)
+//server.listen(serverPort)
+app.listen(appPort, () => console.log(`Example app listening on port ${appPort}!`))
+
