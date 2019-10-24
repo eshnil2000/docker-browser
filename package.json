@@ -1,0 +1,28 @@
+{
+  "name": "docker-browser",
+  "version": "1.0.0",
+  "description": "front end server redirect docker containers to your browser using nginx-proxy",
+  "main": "index.js",
+  "dependencies": {
+    "docker-run": "^3.0.0",
+    "randomstring": "^1.1.5",
+    "xtend": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "demo": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eshnil2000/docker-browser"
+  },
+  "keywords": [
+    "docker"
+  ],
+  "author": "Nilesh Shah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eshnil2000/docker-browser/issues"
+  },
+  "homepage": "https://github.com/eshnil2000/docker-browser"
+}
