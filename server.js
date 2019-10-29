@@ -6,6 +6,7 @@ var timeLimit=10000;
 var dockerNetwork='nginx-proxy';
 var containerLaunch='jwilder/whoami';
 var containerPort=8000;
+var virtualPort=containerPort;
 //END SET VARIABLES//
 const nocache = require('nocache');
 const express = require('express');
@@ -53,9 +54,10 @@ app.get('/', (req, res) =>{
 	});
 	newhost=subhost.concat('.').concat(host);
 	var child = run(containerLaunch, xtend(opts,{net:dockerNetwork,
-         env:{VIRTUAL_HOST:newhost      },
+         env:{VIRTUAL_HOST:newhost,VIRTUAL_PORT:virtualPort      },
          expose:containerPort,
-        } ))
+         ports:containerPort,
+         }))
 
 	child.on('spawn', containerSpawned)
 	child.on('exit', containerExited)
