@@ -2,7 +2,6 @@
 var serverPort=10000;
 var host='proxy.chainapp.live';
 //time in milliseconds
-<<<<<<< HEAD
 var timeLimit=7200000;
 var dockerNetwork='nginx-proxy';
 var containerLaunch='jwilder/whoami';
@@ -21,7 +20,6 @@ var containerLaunch='swaggerapi/swagger-editor';
 //var containerLaunch='nginxdemos/hello';
 var containerPort=8000;
 var containerPort=8090;
->>>>>>> 770c1e71884f98be55b898dd5ef5bf02c3fc13e4
 var virtualPort= containerPort;
 //END SET VARIABLES//
 const nocache = require('nocache');
@@ -64,7 +62,6 @@ app.get('/', (req, res) =>{
                 console.log(`destroyed`, child.id);
         }  
 
-<<<<<<< HEAD
 	subhost=randomstring.generate({
   		length: 12,
   		charset: 'alphabetic'
@@ -84,7 +81,6 @@ app.get('/', (req, res) =>{
          env:{VIRTUAL_HOST:newhost,VIRTUAL_PORT:virtualPort      },
          expose:containerPort,
          ports:containerPort,
->>>>>>> 770c1e71884f98be55b898dd5ef5bf02c3fc13e4
          }))
 
         child.on('spawn', containerSpawned)
