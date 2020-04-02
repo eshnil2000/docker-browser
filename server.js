@@ -7,7 +7,7 @@ var timeLimit=7200000;
 var dockerNetwork='nginx-proxy';
 var containerLaunch='jwilder/whoami';
 var containerLaunch='eshnil2000/dl-blockchain';
-var containerLaunch='eshnil2000/docker-ubuntu-vnc-desktop';
+var containerLaunch='eshnil2000/docker-ubuntu-vnc-pygame-wingide';
 
 //var containerLaunch='swaggerapi/swagger-editor';
 //var containerLaunch='nginxdemos/hello';
