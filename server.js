@@ -14,12 +14,12 @@ var containerPort=80;
 var containerPort=80;
 //=======
 var timeLimit=3600000;
-var dockerNetwork='nginx-proxy';
-var containerLaunch='jwilder/whoami';
-var containerLaunch='swaggerapi/swagger-editor';
+//var dockerNetwork='nginx-proxy';
+//var containerLaunch='jwilder/whoami';
+//var containerLaunch='swaggerapi/swagger-editor';
 //var containerLaunch='nginxdemos/hello';
-var containerPort=8000;
-var containerPort=8090;
+var containerPort=80;
+var containerPort=80;
 var virtualPort= containerPort;
 //END SET VARIABLES//
 const nocache = require('nocache');
