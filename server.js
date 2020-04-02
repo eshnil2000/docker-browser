@@ -12,7 +12,7 @@ var containerLaunch='eshnil2000/docker-ubuntu-vnc-pygame-wingide';
 //var containerLaunch='nginxdemos/hello';
 var containerPort=80;
 var containerPort=80;
-=======
+//=======
 var timeLimit=3600000;
 var dockerNetwork='nginx-proxy';
 var containerLaunch='jwilder/whoami';
@@ -71,7 +71,7 @@ app.get('/', (req, res) =>{
          env:{ VIRTUAL_HOST:newhost,VIRTUAL_PORT:virtualPort      },
          expose:containerPort,
 	 ports:containerPort,
-=======
+//=======
         subhost=randomstring.generate({
                 length: 12,
                 charset: 'alphabetic'
