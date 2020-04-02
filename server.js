@@ -3,7 +3,7 @@ var serverPort=10000;
 var host='proxy.chainapp.live';
 //time in milliseconds
 <<<<<<< HEAD
-var timeLimit=1000000;
+var timeLimit=7200000;
 var dockerNetwork='nginx-proxy';
 var containerLaunch='jwilder/whoami';
 var containerLaunch='eshnil2000/dl-blockchain';
