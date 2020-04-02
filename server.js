@@ -62,16 +62,6 @@ app.get('/', (req, res) =>{
                 console.log(`destroyed`, child.id);
         }  
 
-	subhost=randomstring.generate({
-  		length: 12,
-  		charset: 'alphabetic'
-	});
-	newhost=subhost.concat('.').concat(host);
-	var child = run(containerLaunch, xtend(opts,{net:dockerNetwork,
-         env:{ VIRTUAL_HOST:newhost,VIRTUAL_PORT:virtualPort      },
-         expose:containerPort,
-	 ports:containerPort,
-//=======
         subhost=randomstring.generate({
                 length: 12,
                 charset: 'alphabetic'
@@ -86,6 +76,7 @@ app.get('/', (req, res) =>{
         child.on('spawn', containerSpawned)
         child.on('exit', containerExited)
 
+
 })
 
 /*server.on('listening', function() {
@@ -94,6 +85,4 @@ app.get('/', (req, res) =>{
 
 //server.listen(serverPort)
 app.listen(appPort, () => console.log(`Example app listening on port ${appPort}!`))
-
-
 
